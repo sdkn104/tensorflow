@@ -11,7 +11,7 @@ def main():
     exec_key = str(epoch_num)+"epc"+str(random_seed)
 
     # prepare data
-    my_data = MyData("./data0.csv", max_freq=0.999, min_freq=0.001)
+    my_data = MyData("./data/data0.csv", max_freq=0.999, min_freq=0.001)
     my_data.import_data(None, random_seed)
 
     # data
@@ -34,7 +34,7 @@ def main():
     init = tf.global_variables_initializer()
     sess.run(init) 
 
-    summary_writer = tf.summary.FileWriter("./log-"+exec_key, sess.graph)
+    summary_writer = tf.summary.FileWriter("./data/log-"+exec_key, sess.graph)
 
     # training
     for epoch in range(epoch_num):
@@ -55,7 +55,7 @@ def main():
     acc = sess.run(accuracy, feed_dict={x:word_batch,  y_:label_batch})
     print("TEST: %.0f%%" % (acc * 100.0))
 
-    saver.save(sess, "save-"+exec_key+"/model.ckpt")
+    saver.save(sess, "data/save-"+exec_key+"/model.ckpt")
 
 
 if __name__ == "__main__":

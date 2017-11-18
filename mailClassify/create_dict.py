@@ -97,7 +97,7 @@ def vectorize(csvrow, wordDict, labelDict):
     return wordVec, labelVec
 
 if __name__ == "__main__":
-    wordDict = createDict('./data0.csv')
+    wordDict = createDict('./data/data0.csv')
     with open('wordDict.pickle', mode='wb') as f:
        pickle.dump(wordDict, f)
     #with open('wordDict.pickle', mode='rb') as f:
